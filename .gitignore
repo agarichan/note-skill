@@ -1,0 +1,9 @@
+# Claude Code のローカル設定(ユーザー固有・共有しない)
+.claude/settings.local.json
+
+# OS
+.DS_Store
+
+# Node(note-publish が使う)
+node_modules/
+*.log
