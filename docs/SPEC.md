@@ -77,6 +77,30 @@ note の「見出し画像」として設定する)。
 (`skills/note-writing/templates/{styles,personas}/`)から `articles/`・`styles/`・`personas/` を自動生成する
 (SKILL.md ワークフロー手順0)。
 
+### 優先順位(矛盾したとき何が勝つか)
+
+ルールが衝突したときの優先は以下の3層。**上が下を上書きする**。
+
+1. **絶対固定**(persona でも上書き不可)
+   - **note.com の仕様**: 見出しは H2/H3 のみ / 表はネイティブ非対応 / 数式は `$$...$$` / インラインコード `` `code` `` は不可 / 見出し画像は別設定 等(`note-spec.md`)。
+   - **editor の出力機構**: severity(重大/中/軽)・category キー・「修正前/修正後/意図」の出力形式・観点11の枠組み(`editor-rubric.md` の §機構部分)。
+   - **配布物としての安定性**: SKILL.md のワークフロー骨格・パイプラインの段取り。
+2. **ユーザー定義(persona / styles)** ← 書き手の意思
+   - persona の `避ける言い回し` / `編集観点` / `画像審美` / `温度・距離` 等。
+   - `styles/<名>.yaml` の配色・形式・サイズ。
+3. **スキル本体の「機能する原則」**
+   - `writing-craft.md` の原則(結論先出し・1セクション1論点・段落短く 等)。
+   - `editor-rubric.md` の観点細目(機能判定の部分)。
+   - `image-styles.md` の指針(配色 hex 明示・余白・形式固定 等)。
+
+**1 > 2 > 3**。例:
+
+- persona に「段落は長めでよい」と書く → 3 の「段落短く」より優先される(editor は指摘しない)。
+- persona に「タイトルの末尾(補足)は許容」 → editor は指摘しない。
+- persona に「インラインコード使いたい」 → ✗(1 の note 仕様で破綻するので絶対固定が勝つ)。
+
+note-writing と note-editor はこの優先順位で判断する。**persona が無色(空)なら 3 だけで動く**(無色運用)。
+
 ### 3.1 persona(書き手の個性)
 
 `personas/<名>.yaml` は**書き手の声・人格**を定義する。frontmatter `persona:` で名前参照。
