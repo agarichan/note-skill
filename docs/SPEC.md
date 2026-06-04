@@ -92,6 +92,10 @@ AIっぽさ回避は、**狩る手順・機構は editor-rubric.md** に、**何
 置く(機構は誰でも同じ、中身は人それぞれ)。スキーマと育て方の詳細は
 `skills/note-writing/references/personas.md`。
 
+persona は声だけでなく **画像審美**(避ける画風・逃げ場・方向)も持つ。文章の声と同様、「何が AI っぽく感じるか」は
+書き手の主観なので persona 側に置く。image-styles.md(機能する画像原則)とは別の源泉として、note-figures が
+プロンプト方針に反映する。
+
 ### 3.2 image_style(画像スタイル)
 
 `styles/<名>.yaml` は**画像の見た目**を定義する。frontmatter `image_style:` で記事全体の既定を、
