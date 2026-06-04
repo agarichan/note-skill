@@ -8,7 +8,7 @@ note.com 向け記事執筆〜投稿パイプラインの Agent Skill 一式。
 - `skills/note-editor` — 辛口レビュー(writing の品質ループ)
 - `skills/note-figures` — 図メタ → 画像生成(step2)
 - `skills/note-publish` — note.com への投稿(step3)
-- `templates/` — 新規プロジェクトの種(styles/ と personas/ の汎用見本)
+- `skills/note-writing/templates/` — 新規プロジェクトの種(styles/ と personas/ の汎用見本。note-writing が初期化時に使う)
 - `docs/SPEC.md` — パイプライン全体の正式仕様
 
 ## インストール
@@ -42,12 +42,13 @@ ln -s ~/work/note-skill/skills/note-publish  ~/.claude/skills/note-publish
 
 ## 新規プロジェクトの作り方
 
-任意の作業ディレクトリで:
+任意の作業ディレクトリで note-writing を起動すれば、未初期化の場合に**確認の上で自動初期化**される
+(articles/ styles/ personas/ を内蔵テンプレから作る)。手動で済ませたい場合:
 
 ```sh
 mkdir my-notes && cd my-notes
-cp -r ~/work/note-skill/templates/styles   .
-cp -r ~/work/note-skill/templates/personas .
+cp -r ~/work/note-skill/skills/note-writing/templates/styles   .
+cp -r ~/work/note-skill/skills/note-writing/templates/personas .
 mkdir articles
 ```
 

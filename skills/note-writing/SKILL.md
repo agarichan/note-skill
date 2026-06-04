@@ -50,6 +50,19 @@ url:                         # 公開後の note 記事 URL
 
 ## ワークフロー
 
+0. **初期化チェック** — 設計に入る前に、**作業ディレクトリ直下**に `articles/` `styles/` `personas/` があるか確認する。
+   いずれかが欠けていれば、**ユーザーに「ここで初期化していいですか?」と確認してから**、本スキルの内蔵テンプレで初期化する。
+   ホームディレクトリ等で誤実行すると事故るので、**確認は省略しない**。承認後に次を実行:
+   ```sh
+   # スキル本体のディレクトリから内蔵 templates を参照(SKILL.md と同じ階層の templates/)
+   SKILL_DIR=$(cd "$(dirname "$(readlink -f ~/.claude/skills/note-writing/SKILL.md)")" && pwd)
+   mkdir -p articles
+   [ ! -d styles ]   && cp -r "$SKILL_DIR/templates/styles"   .
+   [ ! -d personas ] && cp -r "$SKILL_DIR/templates/personas" .
+   ```
+   ユーザーが拒否した場合はそのまま次へ進む(後段の `styles`/`persona` 名前解決で失敗が出る可能性は受け入れる)。
+   既に揃っていればスキップ。
+
 1. **設計を詰める** — 読者・狙い・想定の長さ・記事の型、そして **無料 / 有料(有料なら価格と有料ラインの方針)**
    を対話で確定する。質問は AskUserQuestion を使う。記事の型・読まれる構成・有料部分の設計は
    **references/writing-craft.md** を参照(都度ここを読む)。有料記事の仕組みは references/note-spec.md。

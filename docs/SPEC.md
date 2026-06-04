@@ -73,7 +73,9 @@ note の「見出し画像」として設定する)。
 ## 3. 横断資産
 
 スキルは**作業ディレクトリ直下**の `styles/<名>.yaml` / `personas/<名>.yaml` を名前解決する。
-新規プロジェクトは `note-skill/templates/` から種をコピーして始める。
+未初期化の作業ディレクトリで note-writing を起動すると、**確認の上で**内蔵テンプレ
+(`skills/note-writing/templates/{styles,personas}/`)から `articles/`・`styles/`・`personas/` を自動生成する
+(SKILL.md ワークフロー手順0)。
 
 ### 3.1 persona(書き手の個性)
 
@@ -163,6 +165,6 @@ prompt断片:
 
 - **新 persona**: `personas/<名>.yaml` を1つ足す。frontmatter `persona: <名>` で参照。
 - **新 style**: `styles/<名>.yaml` を1つ足す。frontmatter `image_style: <名>` または figure 単位 `style:`。
-- **見本の更新**: `note-skill/templates/` の example.yaml を改修してプロジェクト共通の出発点を育てる。
+- **見本の更新**: `skills/note-writing/templates/` の example.yaml を改修してプロジェクト共通の出発点を育てる。
 - **編集ルブリックの育成**: editor で同じ指摘が頻発したら、`editor-rubric.md` を育てて writing 側へ昇格、
   使われなくなれば降格、重複は蒸留(提案 → 承認で適用)。

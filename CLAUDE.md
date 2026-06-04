@@ -18,11 +18,12 @@ note.com 向け執筆〜投稿パイプラインの Agent Skill 一式。
 
 ## 横断資産
 
-- `templates/styles/` — 画像スタイルの汎用見本。新規プロジェクトはここからコピー。
-- `templates/personas/` — 書き手の個性(声・人格)の汎用見本。同上。
+- `skills/note-writing/templates/styles/` — 画像スタイルの汎用見本(note-writing が初期化時に使う)。
+- `skills/note-writing/templates/personas/` — 書き手の個性(声・人格)の汎用見本。同上。
 
 実物の `styles/<名>.yaml` / `personas/<名>.yaml` は **コンテンツリポ(作業ディレクトリ直下)**に置く。
-スキルは作業ディレクトリ直下を名前解決する。
+スキルは作業ディレクトリ直下を名前解決する。未初期化のディレクトリで note-writing が起動した場合、
+**確認の上で内蔵 templates から自動初期化**する(SKILL.md ワークフロー手順0)。
 
 ## スキルへの反映ルール
 
