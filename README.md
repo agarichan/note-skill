@@ -11,9 +11,27 @@ note.com 向け記事執筆〜投稿パイプラインの Agent Skill 一式。
 - `templates/` — 新規プロジェクトの種(styles/ と personas/ の汎用見本)
 - `docs/SPEC.md` — パイプライン全体の正式仕様
 
-## セットアップ
+## インストール
 
-`~/.claude/skills/` から各スキルへシンボリックリンクを貼る:
+```bash
+npx skills add agarichan/note-skill
+```
+
+特定のスキルだけ入れる場合:
+
+```bash
+npx skills add agarichan/note-skill --skill note-writing
+```
+
+リポジトリ内のスキル一覧を確認:
+
+```bash
+npx skills add agarichan/note-skill --list
+```
+
+### ローカル開発時の手動セットアップ
+
+リポジトリをローカルで編集しながら使うときは `~/.claude/skills/` から各スキルへシンボリックリンクを貼る:
 
 ```sh
 ln -s ~/work/note-skill/skills/note-writing  ~/.claude/skills/note-writing
