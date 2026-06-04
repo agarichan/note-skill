@@ -44,7 +44,11 @@ metadata:
    併せて**総合判定**(重大・中がゼロなら「合格」)。
 3. 各 finding を **findings-log.md** に1行追記する(`日付 | slug | category | severity | 一言`)。
 4. 人向けの体裁は **references/review-output.md**(通常レビュー / 簡易レビュー / リライト方針)に従う。
-5. ログ統計を見て**昇格/降格/蒸留の候補**があれば報告に添える(**適用はしない。提案のみ**)。
+5. ログ統計や今回の findings から **persona / style への反映提案**を添える(適用はしない・提案のみ):
+   - 繰り返し出る言い回しの粗 → persona の `避ける言い回し` / `編集観点.<観点>` に追記してはどうか
+   - 図の方向性の課題 → persona の `画像審美` か 該当 style YAML に追記してはどうか
+   - **スキル本体(writing-craft / editor-rubric / image-styles / SKILL.md)への反映提案はしない**。
+     書き手や記事ジャンルが変わっても効く普遍と確信できる場合のみ、ユーザー判断で本体改修する。
 
 ## note-writing ループでの振る舞い
 
