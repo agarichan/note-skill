@@ -92,9 +92,10 @@ AIっぽさ回避は、**狩る手順・機構は editor-rubric.md** に、**何
 置く(機構は誰でも同じ、中身は人それぞれ)。スキーマと育て方の詳細は
 `skills/note-writing/references/personas.md`。
 
-persona は声だけでなく **画像審美**(避ける画風・逃げ場・方向)も持つ。文章の声と同様、「何が AI っぽく感じるか」は
-書き手の主観なので persona 側に置く。image-styles.md(機能する画像原則)とは別の源泉として、note-figures が
-プロンプト方針に反映する。
+persona は声だけでなく **画像審美**(避ける画風・逃げ場・方向)と **編集観点**(タイトル/冒頭/画像/その他 の
+キー別マップ)も持つ。文章の声・画像の好み・観点別の嫌う型は、いずれも書き手の主観なので persona 側に置く。
+**`編集観点` が空(無色)でも editor は機構(severity・観点11)だけで動く**ので、スキルを他の利用者に
+配布した状態でデフォルト動作する。
 
 ### 3.2 image_style(画像スタイル)
 
@@ -134,10 +135,15 @@ prompt断片:
 - **目的**: writing の品質ループ。読まれやすさ・構成・タイトル・文体・読者体験・note 仕様順守を点検し、
   指摘を**構造化 findings**(category/severity/箇所/問題/改善案)で返す。
 - **入力**: `articles/<slug>/draft.md` のパス(独立コンテキストで起動されるため明示渡し)。
-- **出力**: findings(重大/中/軽)+ 総合判定 + `findings-log.md` への1行追記。重大・中ゼロで合格。
+- **出力**: findings(重大/中/軽)+ 総合判定 + `findings-log.md` への1行追記 + **persona/style への反映提案**。
+  重大・中ゼロで合格。
 - **依存**: `references/editor-rubric.md`(観点11 + category キー + severity 目安)・
   `references/review-output.md`(出力体裁)・対象 draft.md の `persona` を読み込む。
-- **重要**: 文体・声の点検は **persona を「守るべき声」の基準**として行う(汎用の良し悪しではない)。
+- **重要**: 文体・声・観点別の細目判定は **persona を「守るべき声」の基準**として行う(汎用の良し悪しではない)。
+  persona が無色(空)ならそれらは指摘しない(機構だけで動く)。
+- **改善ループの向け先**: editor は繰り返し出る粗を **persona の `避ける言い回し` / `編集観点` / `画像審美` か
+  該当 style YAML への反映提案**として出す。**スキル本体(editor-rubric / writing-craft / image-styles)
+  への反映提案は出さない**(本体は配布物として安定させる)。
 
 ### 4.3 note-figures(step2)
 
@@ -165,10 +171,16 @@ prompt断片:
 
 完全な仕様は各記事執筆時に `skills/note-writing/references/note-spec.md` を参照する。
 
-## 6. 拡張のしかた
+## 6. 拡張のしかた(改善ループの向け先 = persona / style)
+
+スキル本体(`SKILL.md` / `writing-craft.md` / `editor-rubric.md` / `image-styles.md`)は **機能する枠組み・
+普遍原則だけ**を置き、配布物として安定させる。リビング(育つ部分)は **persona / style** に集約する。
 
 - **新 persona**: `personas/<名>.yaml` を1つ足す。frontmatter `persona: <名>` で参照。
 - **新 style**: `styles/<名>.yaml` を1つ足す。frontmatter `image_style: <名>` または figure 単位 `style:`。
+- **persona を育てる**: editor の findings で繰り返し出る粗を、persona の `避ける言い回し` / `編集観点.<観点>` /
+  `画像審美` に追記して反映する。
+- **style を育てる**: 図の方向性の改善を、該当 style YAML(または persona の `画像審美`)に反映する。
 - **見本の更新**: `skills/note-writing/templates/` の example.yaml を改修してプロジェクト共通の出発点を育てる。
-- **編集ルブリックの育成**: editor で同じ指摘が頻発したら、`editor-rubric.md` を育てて writing 側へ昇格、
-  使われなくなれば降格、重複は蒸留(提案 → 承認で適用)。
+- **スキル本体の改修**: 書き手・記事ジャンルが変わっても効く**普遍と確信できる場合のみ**、ユーザー承認で行う。
+  個人の好み・特定ジャンル限定の知見は本体に持ち込まない(persona / style 側で吸収する)。
