@@ -1,0 +1,13 @@
+{
+  "name": "note-publish",
+  "private": true,
+  "version": "0.1.0",
+  "description": "note.com への自動投稿(note-writing/note-figures の step3)。Playwright プリミティブ。",
+  "type": "module",
+  "scripts": {
+    "install-browser": "playwright install chromium"
+  },
+  "dependencies": {
+    "playwright": "^1.49.0"
+  }
+}
